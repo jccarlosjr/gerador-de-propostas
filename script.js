@@ -266,6 +266,8 @@ function convenioHandler(){
 
 function validateForm() {
     const fields = [
+        { id: "code-partner", name: "Código do Parceiro" },
+        { id: "name-partner", name: "Nome do Parceiro" },
         { id: "cpf", name: "CPF" },
         { id: "name", name: "Nome do Cliente" },
         { id: "birthdate", name: "Data de Nascimento" },
@@ -452,18 +454,18 @@ function saveClientData() {
     if (existingClient) {
       return;
     }
-  
+
     clients.push(data);
-  
+
     localStorage.setItem("clients", JSON.stringify(clients));
 }
-  
+
 function searchClientByCPF() {
     let cpfInput = document.getElementById("cpf").value;
     cpfInput = cpfInput.replace(/[.\-\s]/g, "");
     const clients = JSON.parse(localStorage.getItem("clients")) || [];
     const client = clients.find(c => c.cpf === cpfInput);
-  
+
     if (client) {
       document.getElementById("cpf").value = client.cpf;
       document.getElementById("name").value = client.name;
